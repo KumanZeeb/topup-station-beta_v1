@@ -1,0 +1,22 @@
+{
+  "description": "No #1 pembekal top up game & baucar termurah, selamat 100% legal, buka 24 jam dengan payment terlengkap Malaysia. Proses cepat, amanah, dan dipercayai sejak 2020.",
+  "socialMedia": {
+    "title": "MEDIA SOSIAL",
+    "instagram": "Instagram",
+    "tiktok": "Tiktok",
+    "facebook": "Facebook",
+    "telegram": "Telegram"
+  },
+  "support": {
+    "title": "SOKONGAN",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "liveChat": "Live Chat",
+    "help": "Bantuan"
+  },
+  "copyright": "AmiraStore. Hak Cipta Terpelihara.",
+  "alerts": {
+    "redirect": "Mengarahkan ke {platform}",
+    "open": "Membuka {service}"
+  }
+}

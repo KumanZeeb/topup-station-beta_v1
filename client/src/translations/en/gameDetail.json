@@ -1,0 +1,83 @@
+{
+  "pageTitle": "Game Details",
+  "loading": "Loading game details...",
+  "notFound": {
+    "title": "Game Not Found",
+    "message": "Sorry, the game you're looking for is not available",
+    "backButton": "Back to Games"
+  },
+  "backButton": "Back",
+  "gameInfo": {
+    "rating": "Rating",
+    "downloads": "Downloads",
+    "players": "Players",
+    "platform": "Platform",
+    "developer": "Developer",
+    "publisher": "Publisher",
+    "releaseDate": "Release Date",
+    "genre": "Genre",
+    "description": "Description"
+  },
+  "badges": {
+    "flashSale": "FLASH SALE",
+    "popular": "POPULAR"
+  },
+  "tabs": {
+    "topup": "Top Up",
+    "info": "Game Info",
+    "reviews": "Reviews"
+  },
+  "topup": {
+    "userId": {
+      "title": "User ID",
+      "hint": "Enter your game ID",
+      "placeholder": "Example: 123456789",
+      "copy": "Copy",
+      "copied": "Copied",
+      "note": "Make sure User ID is correct, wrong input is not our responsibility"
+    },
+    "selectNominal": {
+      "title": "Select Nominal",
+      "diamondEquivalent": "≈ {diamonds} Diamonds",
+      "popular": "Best Seller",
+      "bonus": "Bonus +{bonus}%",
+      "diamonds": "{count} Diamonds"
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "fee": "+{fee}",
+      "free": "Free"
+    },
+    "checkout": {
+      "total": "Total Payment",
+      "button": "Top Up Now"
+    }
+  },
+  "info": {
+    "about": "About Game",
+    "description": "{name} is a very popular online game in Indonesia. Enjoy various interesting features and collect diamonds to buy exclusive items.",
+    "minimumRequirements": "Minimum Requirements",
+    "requirements": {
+      "os": "OS",
+      "ram": "RAM",
+      "storage": "Storage",
+      "processor": "Processor"
+    }
+  },
+  "reviews": {
+    "summary": {
+      "basedOn": "Based on {count} reviews"
+    },
+    "reviewCard": {
+      "daysAgo": "{days} day ago",
+      "daysAgoPlural": "{days} days ago"
+    }
+  },
+  "relatedGames": {
+    "title": "Other Games"
+  },
+  "validation": {
+    "enterUserId": "Please enter User ID first!",
+    "selectNominal": "Please select a nominal!"
+  }
+}

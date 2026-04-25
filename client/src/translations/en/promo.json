@@ -1,0 +1,63 @@
+{
+  "pageTitle": "🎁 Special Promo",
+  "subtitle": "Get discounts and cashback up to 50% for your favorite game top ups!",
+  "flashSale": "Flash Sale",
+  "hero": {
+    "title": "🎁 Special Promo",
+    "subtitle": "Get discounts and cashback up to 50% for your favorite game top ups!"
+  },
+  "categories": {
+    "all": "All Promos",
+    "flash": "Flash Sale",
+    "discount": "Discount",
+    "cashback": "Cashback",
+    "voucher": "Voucher"
+  },
+  "banners": {
+    "title": "MLBB50",
+    "subtitle": "Mobile Legends Special",
+    "code": "Code",
+    "claim": "Claim"
+  },
+  "activePromo": {
+    "badge": "🔥 HOT PROMO",
+    "claim": "Claim Now"
+  },
+  "productCount": "{count} products",
+  "empty": {
+    "title": "No Promo Yet",
+    "message": "Promos for this category will be coming soon!"
+  },
+  "info": {
+    "howTo": {
+      "title": "How to Get Promo",
+      "steps": [
+        "Select the game you want to top up",
+        "Enter User ID",
+        "Choose top up nominal",
+        "Enter promo code (if any)",
+        "Make payment"
+      ]
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "items": [
+        "Promo applies for new & existing users",
+        "Cannot be combined with other promos",
+        "Limited promo period",
+        "Cashback enters wallet within 1x24 hours"
+      ]
+    }
+  },
+  "badges": {
+    "discount": "{percent}% OFF",
+    "flash": "FLASH SALE",
+    "popular": "POPULAR",
+    "featured": "FEATURED"
+  },
+  "buttons": {
+    "claim": "Claim",
+    "claimNow": "Claim Now",
+    "viewAll": "View All"
+  }
+}

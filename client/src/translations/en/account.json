@@ -1,0 +1,54 @@
+{
+  "profile": {
+    "level": "Member",
+    "joined": "Joined",
+    "balance": "Available Balance",
+    "points": "Reward Points",
+    "topup": "Top Up Balance"
+  },
+  "menu": {
+    "history": {
+      "label": "Transaction History",
+      "desc": "View all top-up transactions"
+    },
+    "wallet": {
+      "label": "My Wallet",
+      "desc": "Balance and vouchers"
+    },
+    "games": {
+      "label": "Favorite Games",
+      "desc": "Games you often play"
+    },
+    "rewards": {
+      "label": "Rewards",
+      "desc": "Points and special gifts"
+    },
+    "support": {
+      "label": "Help & Support",
+      "desc": "Contact customer service"
+    },
+    "settings": {
+      "label": "Settings",
+      "desc": "Change profile and preferences"
+    }
+  },
+  "sections": {
+    "services": "Services",
+    "recentTransactions": "Recent Transactions",
+    "viewAll": "View All"
+  },
+  "transactions": {
+    "status": {
+      "success": "Success",
+      "pending": "Pending",
+      "failed": "Failed"
+    }
+  },
+  "buttons": {
+    "logout": "Logout"
+  },
+  "version": "Version",
+  "loading": {
+    "profile": "Loading profile..."
+  }
+}

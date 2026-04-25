@@ -1,0 +1,107 @@
+{
+  "pageTitle": "Checkout",
+  "loading": "Loading product...",
+  "error": {
+    "productNotFound": "Product not found",
+    "backToHome": "Back to Home"
+  },
+  "region": {
+    "title": "Select Region",
+    "changing": "Changing region...",
+    "select": "Choose your region"
+  },
+  "forms": {
+    "account": {
+      "title": "Account Information",
+      "gameId": {
+        "label": "Game ID",
+        "placeholder": "Enter your Game ID",
+        "error": "Please fill in Game ID"
+      },
+      "serverId": {
+        "label": "Server ID",
+        "placeholder": "Enter Server ID (optional)",
+        "optional": "Optional"
+      },
+      "playerName": {
+        "label": "Player Name",
+        "placeholder": "Character name will appear here",
+        "autoFill": "Auto fill from ID"
+      },
+      "region": {
+        "label": "Server Region",
+        "placeholder": "Select server region"
+      }
+    },
+    "contact": {
+      "title": "Contact Information",
+      "whatsapp": {
+        "label": "WhatsApp Number",
+        "placeholder": "e.g., 1234567890",
+        "error": "WhatsApp number is required",
+        "invalid": "Invalid WhatsApp number. Use 10-15 digits"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "your@email.com",
+        "optional": "Optional"
+      }
+    }
+  },
+  "nominal": {
+    "title": "Select Nominal",
+    "price": "Price",
+    "stock": "Stock",
+    "available": "Available",
+    "soldOut": "Sold Out",
+    "select": "Choose",
+    "selected": "Selected",
+    "noItems": "No items available for this region"
+  },
+  "order": {
+    "summary": "Order Summary",
+    "product": "Product",
+    "nominal": "Nominal",
+    "subtotal": "Subtotal",
+    "serviceFee": "Service Fee",
+    "uniqueCode": "Unique Code",
+    "total": "Total Payment",
+    "confirm": "Confirm Order via WhatsApp",
+    "details": "Order Details"
+  },
+  "whatsapp": {
+    "float": "Chat with us",
+    "message": "Hello AmiraStore, I want to ask about {product}"
+  },
+  "validation": {
+    "selectNominal": "Please select a nominal first",
+    "fillGameId": "Please fill in Game ID",
+    "fillWhatsapp": "Please fill in WhatsApp number"
+  },
+  "orderConfirmation": {
+    "title": "ORDER CONFIRMATION",
+    "product": "PRODUCT",
+    "game": "Game",
+    "nominal": "Nominal",
+    "accountData": "ACCOUNT DATA",
+    "gameId": "Game ID",
+    "server": "Server",
+    "playerName": "Player Name",
+    "buyerContact": "BUYER CONTACT",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "orderDetails": "ORDER DETAILS",
+    "subtotal": "Subtotal",
+    "serviceFee": "Service Fee",
+    "uniqueCode": "Unique Code",
+    "total": "TOTAL",
+    "status": "Status",
+    "waitingPayment": "WAITING FOR PAYMENT",
+    "time": "Time"
+  },
+  "buttons": {
+    "back": "Back",
+    "continue": "Continue",
+    "confirm": "Confirm"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "pageTitle": "🎮 Game Top Up",
+  "subtitle": "Top up your favorite games at the cheapest prices and instant process!",
+  "flashSale": "Flash Sale",
+  "categories": {
+    "all": "All Games",
+    "mobile": "Mobile Games",
+    "pc": "PC Games",
+    "popular": "Popular Games"
+  },
+  "empty": {
+    "title": "No Games Yet",
+    "message": "Games will be coming soon!"
+  },
+  "stats": {
+    "showing": "Showing {count} games",
+    "total": "Total {count} games"
+  },
+  "badges": {
+    "flash": "FLASH",
+    "popular": "POPULAR",
+    "featured": "FEATURED"
+  },
+  "price": "Price",
+  "developer": "Developer",
+  "buy": "Buy Now"
+}

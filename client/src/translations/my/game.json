@@ -1,0 +1,27 @@
+{
+  "pageTitle": "🎮 Top Up Game",
+  "subtitle": "Top up game kegemaran anda dengan harga termurah dan proses segera!",
+  "flashSale": "Jualan Kilat",
+  "categories": {
+    "all": "Semua Game",
+    "mobile": "Game Mobile",
+    "pc": "Game PC",
+    "popular": "Game Popular"
+  },
+  "empty": {
+    "title": "Belum Ada Game",
+    "message": "Game akan segera hadir!"
+  },
+  "stats": {
+    "showing": "Menunjukkan {count} game",
+    "total": "Jumlah {count} game"
+  },
+  "badges": {
+    "flash": "KILAT",
+    "popular": "POPULAR",
+    "featured": "UTAMA"
+  },
+  "price": "Harga",
+  "developer": "Pemaju",
+  "buy": "Beli Sekarang"
+}

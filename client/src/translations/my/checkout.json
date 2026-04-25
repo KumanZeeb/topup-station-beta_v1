@@ -1,0 +1,107 @@
+{
+  "pageTitle": "Checkout",
+  "loading": "Memuat produk...",
+  "error": {
+    "productNotFound": "Produk tidak dijumpai",
+    "backToHome": "Kembali ke Laman Utama"
+  },
+  "region": {
+    "title": "Pilih Region",
+    "changing": "Menukar region...",
+    "select": "Pilih region anda"
+  },
+  "forms": {
+    "account": {
+      "title": "Maklumat Akaun",
+      "gameId": {
+        "label": "ID Permainan",
+        "placeholder": "Masukkan ID Permainan",
+        "error": "Sila isi ID Permainan"
+      },
+      "serverId": {
+        "label": "ID Server",
+        "placeholder": "Masukkan ID Server (pilihan)",
+        "optional": "Pilihan"
+      },
+      "playerName": {
+        "label": "Nama Pemain",
+        "placeholder": "Nama watak akan muncul di sini",
+        "autoFill": "Isi auto dari ID"
+      },
+      "region": {
+        "label": "Region Server",
+        "placeholder": "Pilih region server"
+      }
+    },
+    "contact": {
+      "title": "Maklumat Perhubungan",
+      "whatsapp": {
+        "label": "Nombor WhatsApp",
+        "placeholder": "cth: 1234567890",
+        "error": "Nombor WhatsApp diperlukan",
+        "invalid": "Nombor WhatsApp tidak sah. Guna 10-15 digit"
+      },
+      "email": {
+        "label": "Alamat Email",
+        "placeholder": "anda@email.com",
+        "optional": "Pilihan"
+      }
+    }
+  },
+  "nominal": {
+    "title": "Pilih Nominal",
+    "price": "Harga",
+    "stock": "Stok",
+    "available": "Tersedia",
+    "soldOut": "Habis",
+    "select": "Pilih",
+    "selected": "Dipilih",
+    "noItems": "Tiada item untuk region ini"
+  },
+  "order": {
+    "summary": "Ringkasan Pesanan",
+    "product": "Produk",
+    "nominal": "Nominal",
+    "subtotal": "Jumlah Kecil",
+    "serviceFee": "Yuran Perkhidmatan",
+    "uniqueCode": "Kod Unik",
+    "total": "Jumlah Bayaran",
+    "confirm": "Sahkan Pesanan melalui WhatsApp",
+    "details": "Butiran Pesanan"
+  },
+  "whatsapp": {
+    "float": "Chat dengan kami",
+    "message": "Halo AmiraStore, saya nak tanya tentang {product}"
+  },
+  "validation": {
+    "selectNominal": "Sila pilih nominal dahulu",
+    "fillGameId": "Sila isi ID Permainan",
+    "fillWhatsapp": "Sila isi nombor WhatsApp"
+  },
+  "orderConfirmation": {
+    "title": "PENGESAHAN PESANAN",
+    "product": "PRODUK",
+    "game": "Permainan",
+    "nominal": "Nominal",
+    "accountData": "DATA AKAUN",
+    "gameId": "ID Permainan",
+    "server": "Server",
+    "playerName": "Nama Pemain",
+    "buyerContact": "MAKLUMAT PEMBELI",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "orderDetails": "BUTIRAN PESANAN",
+    "subtotal": "Jumlah Kecil",
+    "serviceFee": "Yuran Perkhidmatan",
+    "uniqueCode": "Kod Unik",
+    "total": "JUMLAH",
+    "status": "Status",
+    "waitingPayment": "MENUNGGU PEMBAYARAN",
+    "time": "Masa"
+  },
+  "buttons": {
+    "back": "Kembali",
+    "continue": "Teruskan",
+    "confirm": "Sahkan"
+  }
+}

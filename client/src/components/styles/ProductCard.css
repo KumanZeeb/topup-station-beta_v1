@@ -1,0 +1,773 @@
+/* client/src/styles/ProductCard.css */
+
+/* ===================================== */
+/* TOPUP CARD - DARK MODE + PINK SHADOW */
+/* ===================================== */
+
+.product-card.topup-card {
+  display: flex;
+  flex-direction: column;
+  background: #1a1a2c;
+  border-radius: 24px;
+  padding: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* 🌸 PINK SHADOW - HOVER EFFECT */
+.product-card.topup-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 8px 0 rgba(0, 0, 0, 0.25),
+    0 16px 28px -8px rgba(255, 105, 180, 0.5);
+  border-color: rgba(255, 105, 180, 0.2);
+}
+
+/* ✨ PINK SHADOW - ACTIVE/CLICK */
+.product-card.topup-card:active {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 6px 0 rgba(0, 0, 0, 0.25),
+    0 12px 22px -6px rgba(255, 105, 180, 0.6);
+  border-color: rgba(255, 105, 180, 0.3);
+}
+
+/* ========== */
+/* ICON WRAPPER - FIXED LAYOUT */
+/* ========== */
+
+.product-card.topup-card .product-icon-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #25253a;
+  margin-bottom: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card.topup-card .product-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Alternative: Use cover for certain image types */
+.product-card.topup-card .product-icon.cover-fit {
+  object-fit: cover;
+  padding: 0;
+}
+
+.product-card.topup-card:hover .product-icon {
+  transform: scale(1.05);
+}
+
+/* 🎨 FALLBACK ICON - Inisial */
+.product-card.topup-card .product-icon-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #7c3aed, #6d28d9);
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 700;
+  border-radius: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+/* ========== */
+/* BADGES - IMPROVED VERSION */
+/* ========== */
+
+.product-card.topup-card .product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(18, 18, 30, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+  pointer-events: none;
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge dengan icon */
+.product-card.topup-card .product-badge.has-icon {
+  padding: 4px 10px 4px 8px;
+}
+
+.product-card.topup-card .product-badge .badge-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Badge Flash Sale - Merah */
+.product-card.topup-card .flash-sale {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Badge Popular - Oren */
+.product-card.topup-card .popular {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border: 1px solid rgba(255, 180, 70, 0.3);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* Badge Featured - Ungu */
+.product-card.topup-card .featured {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: 1px solid rgba(200, 180, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Badge New - Biru */
+.product-card.topup-card .badge-new {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Badge Limited - Pink */
+.product-card.topup-card .badge-limited {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  border: 1px solid rgba(255, 100, 200, 0.3);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+/* Badge Pre-order - Ungu Muda */
+.product-card.topup-card .badge-preorder {
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+  border: 1px solid rgba(200, 150, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+/* Badge Best Seller - Emas */
+.product-card.topup-card .badge-bestseller {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border: 1px solid rgba(255, 200, 50, 0.3);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+  color: #000;
+}
+
+/* Badge Posisi Kanan */
+.product-card.topup-card .product-badge-top-right {
+  left: auto;
+  right: 12px;
+}
+
+/* Badge Posisi Bawah */
+.product-card.topup-card .product-badge-bottom-left {
+  top: auto;
+  bottom: 12px;
+  left: 12px;
+}
+
+.product-card.topup-card .product-badge-bottom-right {
+  top: auto;
+  bottom: 12px;
+  left: auto;
+  right: 12px;
+}
+
+/* Multiple badges container */
+.product-card.topup-card .badges-container {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.product-card.topup-card .badges-container.right-aligned {
+  justify-content: flex-end;
+}
+
+.product-card.topup-card .badges-container.center-aligned {
+  justify-content: center;
+}
+
+.product-card.topup-card .badges-container .product-badge {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: auto;
+}
+
+/* Badge variant - lebih kecil untuk multiple badges */
+.product-card.topup-card .badges-container .product-badge {
+  padding: 3px 10px;
+  font-size: 10px;
+}
+
+/* Badge Animations */
+.product-card.topup-card .product-badge.pulse {
+  animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.product-card.topup-card .product-badge.glow {
+  animation: badge-glow 2s infinite;
+}
+
+@keyframes badge-glow {
+  0% {
+    box-shadow: 0 4px 12px currentColor;
+  }
+  50% {
+    box-shadow: 0 4px 20px currentColor;
+  }
+  100% {
+    box-shadow: 0 4px 12px currentColor;
+  }
+}
+
+/* ========== */
+/* PRODUCT INFO */
+/* ========== */
+
+.product-card.topup-card .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Nama Produk */
+.product-card.topup-card .product-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+}
+
+/* Developer / Kategori */
+.product-card.topup-card .product-developer {
+  font-size: 13px;
+  color: #a1a1c2;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* 💰 HARGA - HIGHLIGHT */
+.product-card.topup-card .product-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: -0.8px;
+  background: linear-gradient(145deg, #ffffff, #e0e7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  line-height: 1.2;
+}
+
+/* ========== */
+/* SKELETON LOADING */
+/* ========== */
+
+.product-card.topup-card-skeleton {
+  background: #1a1a2c;
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.product-card.topup-card-skeleton .skeleton-icon {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(90deg, #25253a 25%, #2f2f4a 50%, #25253a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease infinite;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.product-card.topup-card-skeleton .skeleton-title {
+  height: 18px;
+  width: 80%;
+  background: linear-gradient(90deg, #25253a 25%, #2f2f4a 50%, #25253a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease infinite;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.product-card.topup-card-skeleton .skeleton-price {
+  height: 24px;
+  width: 60%;
+  background: linear-gradient(90deg, #25253a 25%, #2f2f4a 50%, #25253a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease infinite;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========== */
+/* UTILITY CLASSES FOR IMAGES */
+/* ========== */
+
+/* Untuk gambar dengan background putih */
+.product-card.topup-card .product-icon.white-bg {
+  object-fit: contain;
+  background: white;
+  border-radius: 12px;
+}
+
+/* Untuk gambar dengan aspect ratio berbeda */
+.product-card.topup-card .product-icon.contain-fit {
+  object-fit: contain;
+  padding: 12px;
+}
+
+.product-card.topup-card .product-icon.cover-fit {
+  object-fit: cover;
+  padding: 0;
+}
+
+/* Fix untuk gambar yang terlalu kecil */
+.product-card.topup-card .product-icon-wrapper.small-image-fix {
+  background: #25253a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card.topup-card .product-icon-wrapper.small-image-fix .product-icon {
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 0;
+}
+
+/* ========== */
+/* RESPONSIVE BREAKPOINTS */
+/* ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .product-card.topup-card {
+    padding: 16px;
+    border-radius: 22px;
+  }
+  
+  .product-card.topup-card .product-title {
+    font-size: 16px;
+  }
+  
+  .product-card.topup-card .product-price {
+    font-size: 20px;
+  }
+  
+  .product-card.topup-card .product-icon {
+    padding: 10px;
+  }
+  
+  /* Badges tablet */
+  .product-card.topup-card .product-badge {
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  
+  .product-card.topup-card .product-badge-top-right {
+    right: 10px;
+  }
+  
+  .product-card.topup-card .badges-container {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+}
+
+/* Tablet kecil */
+@media (max-width: 768px) {
+  .product-card.topup-card {
+    padding: 14px;
+    border-radius: 20px;
+  }
+  
+  .product-card.topup-card .product-icon-wrapper {
+    border-radius: 18px;
+    margin-bottom: 14px;
+  }
+  
+  .product-card.topup-card .product-icon {
+    padding: 10px;
+  }
+  
+  .product-card.topup-card .product-title {
+    font-size: 15px;
+  }
+  
+  .product-card.topup-card .product-developer {
+    font-size: 12px;
+  }
+  
+  .product-card.topup-card .product-price {
+    font-size: 19px;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  
+  .product-card.topup-card .product-icon-fallback {
+    font-size: 2rem;
+  }
+  
+  /* Badges tablet kecil */
+  .product-card.topup-card .product-badge {
+    top: 10px;
+    left: 10px;
+    padding: 3px 10px;
+    font-size: 10px;
+    border-radius: 6px;
+  }
+  
+  .product-card.topup-card .product-badge-top-right {
+    right: 10px;
+  }
+  
+  .product-card.topup-card .badges-container {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 4px;
+  }
+}
+
+/* Mobile L (425px) */
+@media (max-width: 480px) {
+  .product-card.topup-card {
+    padding: 12px;
+    border-radius: 18px;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+  }
+  
+  .product-card.topup-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 6px 0 rgba(0, 0, 0, 0.25),
+      0 14px 22px -6px rgba(255, 105, 180, 0.5);
+  }
+  
+  .product-card.topup-card .product-icon-wrapper {
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border-width: 1.5px;
+  }
+  
+  .product-card.topup-card .product-icon {
+    padding: 8px;
+  }
+  
+  .product-card.topup-card .product-title {
+    font-size: 14px;
+    letter-spacing: -0.2px;
+  }
+  
+  .product-card.topup-card .product-developer {
+    font-size: 11px;
+    color: #9494b3;
+  }
+  
+  .product-card.topup-card .product-price {
+    font-size: 17px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top-width: 1px;
+  }
+  
+  .product-card.topup-card .product-icon-fallback {
+    font-size: 1.7rem;
+    border-radius: 16px;
+  }
+  
+  /* Badges mobile */
+  .product-card.topup-card .product-badge {
+    top: 8px;
+    left: 8px;
+    padding: 2px 8px;
+    font-size: 9px;
+    border-radius: 5px;
+    letter-spacing: 0.3px;
+  }
+  
+  .product-card.topup-card .product-badge-top-right {
+    right: 8px;
+  }
+  
+  .product-card.topup-card .badges-container {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+  
+  .product-card.topup-card .badges-container .product-badge {
+    padding: 2px 6px;
+    font-size: 8px;
+  }
+  
+  /* Skeleton mobile */
+  .product-card.topup-card-skeleton {
+    padding: 12px;
+    border-radius: 18px;
+  }
+  
+  .product-card.topup-card-skeleton .skeleton-icon {
+    border-radius: 16px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Mobile M (375px) */
+@media (max-width: 375px) {
+  .product-card.topup-card {
+    padding: 10px;
+    border-radius: 16px;
+  }
+  
+  .product-card.topup-card .product-icon-wrapper {
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card.topup-card .product-icon {
+    padding: 6px;
+  }
+  
+  .product-card.topup-card .product-title {
+    font-size: 13px;
+  }
+  
+  .product-card.topup-card .product-developer {
+    font-size: 10px;
+  }
+  
+  .product-card.topup-card .product-price {
+    font-size: 16px;
+  }
+  
+  .product-card.topup-card .product-icon-fallback {
+    font-size: 1.5rem;
+    border-radius: 14px;
+  }
+  
+  /* Badges mobile kecil */
+  .product-card.topup-card .product-badge {
+    top: 6px;
+    left: 6px;
+    padding: 2px 6px;
+    font-size: 8px;
+  }
+  
+  .product-card.topup-card .product-badge-top-right {
+    right: 6px;
+  }
+  
+  .product-card.topup-card .badges-container {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+  }
+}
+
+/* ========== */
+/* TOUCH DEVICE OPTIMIZATION */
+/* ========== */
+
+@media (hover: none) and (pointer: coarse) {
+  .product-card.topup-card:hover {
+    transform: none;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.03);
+  }
+  
+  .product-card.topup-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.1s ease;
+  }
+  
+  .product-card.topup-card:hover .product-icon {
+    transform: none;
+  }
+}
+
+/* ========== */
+/* DARK MODE ENHANCEMENTS */
+/* ========== */
+
+@media (prefers-color-scheme: dark) {
+  .product-card.topup-card {
+    background: #161625;
+  }
+  
+  .product-card.topup-card .product-icon-wrapper {
+    background: #202035;
+  }
+}
+
+/* ========== */
+/* ANIMATIONS */
+/* ========== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card.topup-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ========== */
+/* GRID CONTAINER UNTUK TOPUP PAGE */
+/* ========== */
+
+.topup-grid-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  background: #0f0f17;
+  min-height: 100vh;
+}
+
+.topup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Grid responsive */
+@media (min-width: 640px) {
+  .topup-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .topup-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .topup-grid-container {
+    padding: 32px 28px;
+  }
+  
+  .topup-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .topup-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topup-grid-container {
+    padding: 16px 12px;
+  }
+  
+  .topup-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .topup-grid {
+    gap: 12px;
+  }
+}

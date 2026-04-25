@@ -1,0 +1,54 @@
+{
+  "profile": {
+    "level": "Ahli",
+    "joined": "Bergabung",
+    "balance": "Baki Tersedia",
+    "points": "Mata Ganjaran",
+    "topup": "Top Up Baki"
+  },
+  "menu": {
+    "history": {
+      "label": "Sejarah Transaksi",
+      "desc": "Lihat semua transaksi top up"
+    },
+    "wallet": {
+      "label": "Dompet Saya",
+      "desc": "Baki dan baucar"
+    },
+    "games": {
+      "label": "Permainan Kegemaran",
+      "desc": "Permainan yang kerap anda main"
+    },
+    "rewards": {
+      "label": "Ganjaran",
+      "desc": "Mata dan hadiah istimewa"
+    },
+    "support": {
+      "label": "Bantuan & Sokongan",
+      "desc": "Hubungi khidmat pelanggan"
+    },
+    "settings": {
+      "label": "Tetapan",
+      "desc": "Ubah profil dan keutamaan"
+    }
+  },
+  "sections": {
+    "services": "Perkhidmatan",
+    "recentTransactions": "Transaksi Terkini",
+    "viewAll": "Lihat Semua"
+  },
+  "transactions": {
+    "status": {
+      "success": "Berjaya",
+      "pending": "Dalam Proses",
+      "failed": "Gagal"
+    }
+  },
+  "buttons": {
+    "logout": "Log Keluar"
+  },
+  "version": "Versi",
+  "loading": {
+    "profile": "Memuat profil..."
+  }
+}

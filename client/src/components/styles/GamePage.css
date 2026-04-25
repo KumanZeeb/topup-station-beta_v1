@@ -1,0 +1,68 @@
+/* client/src/styles/GamePage.css */
+
+.game-page-header {
+  padding: 24px 24px 8px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.game-page-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+.game-page-subtitle {
+  font-size: 15px;
+  color: #a1a1c2;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.game-count {
+  text-align: right;
+  padding: 16px 0 0 0;
+  color: #9494b3;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-page-header {
+    padding: 20px 20px 4px 20px;
+  }
+  
+  .game-page-header h1 {
+    font-size: 24px;
+  }
+  
+  .game-page-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-page-header {
+    padding: 16px 16px 0 16px;
+  }
+  
+  .game-page-header h1 {
+    font-size: 22px;
+  }
+  
+  .game-page-subtitle {
+    font-size: 13px;
+  }
+  
+  .game-count {
+    font-size: 12px;
+    padding: 12px 0 0 0;
+  }
+}

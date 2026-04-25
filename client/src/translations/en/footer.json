@@ -1,0 +1,22 @@
+{
+  "description": "No #1 top up game & voucher supplier, cheapest, safe 100% legal, open 24 hours with complete payment methods in Malaysia. Fast process, trustworthy, and reliable since 2020.",
+  "socialMedia": {
+    "title": "SOCIAL MEDIA",
+    "instagram": "Instagram",
+    "tiktok": "Tiktok",
+    "facebook": "Facebook",
+    "telegram": "Telegram"
+  },
+  "support": {
+    "title": "SUPPORT",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "liveChat": "Live Chat",
+    "help": "Help"
+  },
+  "copyright": "AmiraStore. All Rights Reserved.",
+  "alerts": {
+    "redirect": "Redirecting to {platform}",
+    "open": "Opening {service}"
+  }
+}

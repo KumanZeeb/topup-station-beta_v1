@@ -1,0 +1,124 @@
+/* ===== BANNER SLIDER ===== */
+.banner-slider {
+  position: relative;
+  margin: 16px;
+  height: 180px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 77, 141, 0.25);
+  cursor: pointer;
+}
+
+/* VIEWPORT = PENJAGA GERBANG */
+.slider-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* SLIDES */
+.slides-container {
+  display: flex;
+  width: 100%; /* 🔥 FIX UTAMA */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* SLIDE */
+.slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* IMAGE */
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* DOTS */
+.slider-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #ff5c8d;
+  transform: scale(1.2);
+}
+
+/* ARROWS */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.banner-slider:hover .slider-arrow {
+  opacity: 1;
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 92, 141, 0.8);
+}
+
+.prev-arrow {
+  left: 12px;
+}
+
+.next-arrow {
+  right: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .banner-slider {
+    height: 150px;
+    border-radius: 16px;
+  }
+
+  .slider-viewport {
+    border-radius: 16px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .slider-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}

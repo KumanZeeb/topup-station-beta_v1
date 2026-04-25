@@ -1,0 +1,63 @@
+{
+  "pageTitle": "🎁 Promo Istimewa",
+  "subtitle": "Dapatkan diskaun dan cashback sehingga 50% untuk top up game kegemaran anda!",
+  "flashSale": "Jualan Kilat",
+  "hero": {
+    "title": "🎁 Promo Istimewa",
+    "subtitle": "Dapatkan diskaun dan cashback sehingga 50% untuk top up game kegemaran anda!"
+  },
+  "categories": {
+    "all": "Semua Promo",
+    "flash": "Jualan Kilat",
+    "discount": "Diskaun",
+    "cashback": "Cashback",
+    "voucher": "Voucher"
+  },
+  "banners": {
+    "title": "MLBB50",
+    "subtitle": "Mobile Legends Special",
+    "code": "Kod",
+    "claim": "Klaim"
+  },
+  "activePromo": {
+    "badge": "🔥 PROMO HOT",
+    "claim": "Klaim Sekarang"
+  },
+  "productCount": "{count} produk",
+  "empty": {
+    "title": "Belum Ada Promo",
+    "message": "Promo untuk kategori ini akan segera hadir!"
+  },
+  "info": {
+    "howTo": {
+      "title": "Cara Mendapatkan Promo",
+      "steps": [
+        "Pilih game yang ingin di-top up",
+        "Masukkan ID Pengguna",
+        "Pilih nominal top up",
+        "Masukkan kod promo (jika ada)",
+        "Lakukan pembayaran"
+      ]
+    },
+    "terms": {
+      "title": "Syarat & Ketentuan",
+      "items": [
+        "Promo berlaku untuk pengguna baru & lama",
+        "Tidak boleh digabung dengan promo lain",
+        "Tempoh promo terhad",
+        "Cashback masuk ke dompet dalam 1x24 jam"
+      ]
+    }
+  },
+  "badges": {
+    "discount": "{percent}% OFF",
+    "flash": "JUALAN KILAT",
+    "popular": "POPULAR",
+    "featured": "UTAMA"
+  },
+  "buttons": {
+    "claim": "Klaim",
+    "claimNow": "Klaim Sekarang",
+    "viewAll": "Lihat Semua"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "pageTitle": "Butiran Permainan",
+  "loading": "Memuat butiran permainan...",
+  "notFound": {
+    "title": "Permainan Tidak Dijumpai",
+    "message": "Maaf, permainan yang anda cari tidak tersedia",
+    "backButton": "Kembali ke Permainan"
+  },
+  "backButton": "Kembali",
+  "gameInfo": {
+    "rating": "Penilaian",
+    "downloads": "Muat Turun",
+    "players": "Pemain",
+    "platform": "Platform",
+    "developer": "Pemaju",
+    "publisher": "Penerbit",
+    "releaseDate": "Tarikh Terbit",
+    "genre": "Genre",
+    "description": "Penerangan"
+  },
+  "badges": {
+    "flashSale": "JUALAN KILAT",
+    "popular": "POPULAR"
+  },
+  "tabs": {
+    "topup": "Top Up",
+    "info": "Maklumat Game",
+    "reviews": "Ulasan"
+  },
+  "topup": {
+    "userId": {
+      "title": "ID Pengguna",
+      "hint": "Masukkan ID permainan anda",
+      "placeholder": "Contoh: 123456789",
+      "copy": "Salin",
+      "copied": "Disalin",
+      "note": "Pastikan ID Pengguna betul, kesalahan input bukan tanggungjawab kami"
+    },
+    "selectNominal": {
+      "title": "Pilih Nominal",
+      "diamondEquivalent": "≈ {diamonds} Diamond",
+      "popular": "Paling Laris",
+      "bonus": "Bonus +{bonus}%",
+      "diamonds": "{count} Diamond"
+    },
+    "paymentMethods": {
+      "title": "Kaedah Pembayaran",
+      "fee": "+{fee}",
+      "free": "Percuma"
+    },
+    "checkout": {
+      "total": "Jumlah Bayaran",
+      "button": "Top Up Sekarang"
+    }
+  },
+  "info": {
+    "about": "Tentang Game",
+    "description": "{name} adalah permainan online yang sangat popular di Indonesia. Nikmati pelbagai ciri menarik dan kumpulkan diamond untuk membeli item eksklusif.",
+    "minimumRequirements": "Spesifikasi Minimum",
+    "requirements": {
+      "os": "OS",
+      "ram": "RAM",
+      "storage": "Storan",
+      "processor": "Pemproses"
+    }
+  },
+  "reviews": {
+    "summary": {
+      "basedOn": "Berdasarkan {count} ulasan"
+    },
+    "reviewCard": {
+      "daysAgo": "{days} hari lalu",
+      "daysAgoPlural": "{days} hari lalu"
+    }
+  },
+  "relatedGames": {
+    "title": "Permainan Lain"
+  },
+  "validation": {
+    "enterUserId": "Sila masukkan ID Pengguna dahulu!",
+    "selectNominal": "Sila pilih nominal!"
+  }
+}
