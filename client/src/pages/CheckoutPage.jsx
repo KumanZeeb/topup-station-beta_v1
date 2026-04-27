@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useTranslation } from '../context/TranslationContext';
 
 import Header from './../components/layout/Header';
-import HeroBanner from '../components/Checkout/HeroBanner';
 import ProductMetrics from '../components/Checkout/ProductMetrics';
 import DescriptionSection from '../components/Checkout/DescriptionSection';
 import AccountForm from '../components/Checkout/AccountForm';
