@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useTranslation } from '../context/TranslationContext';
 
 import Header from './../components/layout/Header';
-import ProductMetrics from '../components/Checkout/ProductMetrics';
-import DescriptionSection from '../components/Checkout/DescriptionSection';
-import AccountForm from '../components/Checkout/AccountForm';
-import NominalSelection from '../components/Checkout/NominalSelection';
-import ContactForm from '../components/Checkout/ContactForm';
-import OrderSummary from '../components/Checkout/OrderSummary';
+import ProductMetrics from '../components/checkout/ProductMetrics';
+import DescriptionSection from '../components/checkout/DescriptionSection';
+import AccountForm from '../components/checkout/AccountForm';
+import NominalSelection from '../components/checkout/NominalSelection';
+import ContactForm from '../components/checkout/ContactForm';
+import OrderSummary from '../components/checkout/OrderSummary';
 import CheckoutSkeleton from '../components/skeletons/CheckoutSkeleton';
 
 import '../components/styles/checkout.css';
