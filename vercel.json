@@ -4,7 +4,7 @@
       "src": "client/**",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "build"
       }
     },
     {
@@ -14,6 +14,6 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/server/api/$1" },
-    { "src": "/(.*)", "dest": "/client/dist/$1" }
+    { "src": "/(.*)", "dest": "/client/build/$1" }
   ]
 }
