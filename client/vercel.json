@@ -6,14 +6,16 @@
       "config": {
         "distDir": "build"
       }
-    },
-    {
-      "src": "server/**",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/server/api/$1" },
-    { "src": "/(.*)", "dest": "/client/build/$1" }
+    {
+      "src": "/api/(.*)",
+      "dest": "https://topup-station-api-v2.maakunn470.workers.dev/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/build/$1"
+    }
   ]
 }
