@@ -74,7 +74,9 @@ const AppContent = () => {
     const fetchProducts = async () => {
       try {
         console.log("Fetching products for all pages...");
-        const res = await fetch('https://topup-station-api-v2.maakunn470.workers.dev/api/products');
+        const res = await fetch(process.env.NODE_ENV === 'production' 
+          ? 'https://topup-station-api-v2.maakunn470.workers.dev/api/products'
+          : 'http://localhost:3001/api/products');
         const data = await res.json();
         setProducts(data);
       } catch (error) {
