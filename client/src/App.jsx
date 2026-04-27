@@ -12,7 +12,7 @@ import PromoPage from './pages/PromoPage';
 import AccountPage from './pages/AccountPage';
 import GameDetailPage from './pages/GameDetailPage';
 import CheckoutPage from './pages/CheckoutPage';
-import ToolsPage from './pages/ToolsPage';  // ✅ Import ToolsPage
+import ToolsPage from './pages/ToolsPage';
 
 // Components
 import Banner from './components/sections/Banner';
@@ -23,8 +23,13 @@ import PopularGames from './components/sections/PopularGames';
 import Tabs from './components/sections/Tabs';
 import ProductGrid from './components/sections/ProductGrid';
 
+// ✅ CONSTANTS API URL
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://topup-station-api-v2.maakunn470.workers.dev/api'
+  : 'http://localhost:3001/api';
+
 // =======================
-// HOME COMPONENT
+// HOME COMPONENT (FIXED)
 // =======================
 const Home = () => {
   const { t } = useTranslation();
@@ -34,8 +39,8 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("Fetching products...");
-        const res = await fetch('/api/products');
+        console.log("Fetching products from:", API_URL);
+        const res = await fetch(`${API_URL}/products`);
         const data = await res.json();
         setProducts(data);
       } catch (error) {
@@ -73,10 +78,8 @@ const AppContent = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("Fetching products for all pages...");
-        const res = await fetch(process.env.NODE_ENV === 'production' 
-          ? 'https://topup-station-api-v2.maakunn470.workers.dev/api/products'
-          : 'http://localhost:3001/api/products');
+        console.log("Fetching products for all pages from:", API_URL);
+        const res = await fetch(`${API_URL}/products`);
         const data = await res.json();
         setProducts(data);
       } catch (error) {
@@ -90,7 +93,7 @@ const AppContent = () => {
   }, []);
 
   // List path yang pake Layout + BottomNav
-  const layoutPaths = ['/', '/home', '/games', '/promo', '/account', '/tools']; // ✅ Tambah /tools
+  const layoutPaths = ['/', '/home', '/games', '/promo', '/account', '/tools'];
   const shouldUseLayout = layoutPaths.includes(location.pathname);
 
   useEffect(() => {
@@ -107,7 +110,7 @@ const AppContent = () => {
           <Route path="/games" element={<GamePage products={products} isLoading={isLoading} />} />
           <Route path="/promo" element={<PromoPage products={products} isLoading={isLoading} />} />
           <Route path="/account" element={<AccountPage />} />
-          <Route path="/tools" element={<ToolsPage />} />  {/* ✅ Route ToolsPage */}
+          <Route path="/tools" element={<ToolsPage />} />
         </Routes>
       </Layout>
     );
