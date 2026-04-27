@@ -14,9 +14,10 @@ import CheckoutSkeleton from '../components/skeletons/CheckoutSkeleton';
 
 import '../components/styles/checkout.css';
 
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? '/api' 
-  : (window.API_URL || '/api');
+const API_URL = process.env.NODE_ENV === 'production'
+  ? "https://topup-station-api-v2.maakunn470.workers.dev/api"
+  : "http://localhost:3001/api";
+
 const WHATSAPP_NUMBER = window.WHATSAPP_NUMBER || '601173807270';
 
 const api = axios.create({
