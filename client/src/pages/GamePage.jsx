@@ -5,22 +5,43 @@ import ProductCard from '../components/UI/ProductCard';
 import PopularGames from '../components/sections/PopularGames';
 import './../components/styles/ProductCard.css';
 
+// ✅ HARDCODED API URL - Langsung ke worker
+const API_URL = 'https://topup-station-api-v2.maakunn470.workers.dev/api';
+
 const GamePage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("Fetching products for GamePage...");
-        const res = await fetch('/api/products');
-        const data = await res.json();
-        console.log("Products data:", data);
-        // Karena response { success, count, data }
-        const productData = data.data || data;
-        setProducts(Array.isArray(productData) ? productData : []);
-      } catch (error) {
-        console.error("Fetch error:", error);
+        console.log(`🔄 Fetching products from: ${API_URL}/products`);
+        
+        const res = await fetch(`${API_URL}/products`);
+        
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        
+        const responseData = await res.json();
+        console.log("✅ Products response:", responseData);
+        
+        // Response format: { success: true, data: [...], count: n }
+        if (responseData.success && Array.isArray(responseData.data)) {
+          setProducts(responseData.data);
+          console.log(`✅ Loaded ${responseData.data.length} products`);
+        } else if (Array.isArray(responseData)) {
+          // Fallback kalo response langsung array
+          setProducts(responseData);
+          console.log(`✅ Loaded ${responseData.length} products (array format)`);
+        } else {
+          console.warn("⚠️ Unexpected response format:", responseData);
+          setProducts([]);
+        }
+      } catch (err) {
+        console.error("❌ Fetch error:", err.message);
+        setError(err.message);
         setProducts([]);
       } finally {
         setIsLoading(false);
@@ -30,12 +51,15 @@ const GamePage = () => {
     fetchProducts();
   }, []);
 
-  // ✅ Tampilkan semua produk (karena ga ada field category)
-  const games = Array.isArray(products) ? products : [];
+  // Filter hanya yang category-nya 'game' atau nggak ada filter (tampilin semua)
+  const games = Array.isArray(products) 
+    ? products.filter(p => p.category === 'mobile' || p.category === 'pc' || !p.category)
+    : [];
 
-  const handleProductClick = (slug) => {
-    console.log('Clicked game:', slug);
-    window.location.href = `/game/${slug}`;
+  const handleProductClick = (shortName) => {
+    console.log('🎮 Clicked game:', shortName);
+    // Pake short_name buat routing, bukan slug
+    window.location.href = `/${shortName}`;
   };
 
   return (
@@ -50,6 +74,7 @@ const GamePage = () => {
       <PopularGames />
 
       <div className="topup-grid-container" style={styles.gridContainer}>
+        {/* Loading State */}
         {isLoading && (
           <div className="topup-grid" style={styles.grid}>
             {[...Array(8)].map((_, i) => (
@@ -58,15 +83,32 @@ const GamePage = () => {
           </div>
         )}
 
-        {!isLoading && games.length === 0 && (
+        {/* Error State */}
+        {!isLoading && error && (
           <div style={styles.emptyState}>
-            <div style={styles.emptyIcon}>🎮</div>
-            <h3 style={styles.emptyTitle}>Belum Ada Game</h3>
-            <p style={styles.emptyText}>Game akan segera hadir</p>
+            <div style={styles.emptyIcon}>⚠️</div>
+            <h3 style={styles.emptyTitle}>Gagal Memuat Game</h3>
+            <p style={styles.emptyText}>{error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              style={styles.retryButton}
+            >
+              Coba Lagi
+            </button>
           </div>
         )}
 
-        {!isLoading && games.length > 0 && (
+        {/* Empty State */}
+        {!isLoading && !error && games.length === 0 && (
+          <div style={styles.emptyState}>
+            <div style={styles.emptyIcon}>🎮</div>
+            <h3 style={styles.emptyTitle}>Belum Ada Game</h3>
+            <p style={styles.emptyText}>Game akan segera hadir. Stay tuned!</p>
+          </div>
+        )}
+
+        {/* Products Grid */}
+        {!isLoading && !error && games.length > 0 && (
           <>
             <div className="topup-grid" style={styles.grid}>
               {games.map((game) => (
@@ -77,9 +119,10 @@ const GamePage = () => {
                   name={game.name}
                   developer={game.developer || 'Official'}
                   icon_url={game.icon_url}
-                  price={parseFloat(game.min_price) * 15000 || 50000}                  is_flash_sale={game.is_flash_sale || false}
+                  price={parseFloat(game.min_price) * 15000 || 50000}
+                  is_flash_sale={game.is_flash_sale || false}
                   is_popular={game.meta_data?.popularity > 80}
-                  onProductClick={handleProductClick}
+                  onProductClick={() => handleProductClick(game.short_name)}
                 />
               ))}
             </div>
@@ -141,6 +184,17 @@ const styles = {
     fontSize: '14px',
     color: '#71717a',
     margin: 0
+  },
+  retryButton: {
+    marginTop: '16px',
+    padding: '10px 24px',
+    background: '#ff69b4',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: '600'
   },
   gameCount: {
     textAlign: 'center',
