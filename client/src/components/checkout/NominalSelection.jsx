@@ -15,7 +15,6 @@ const NominalSelection = ({ items, selectedNominal, onSelect, region, productSho
       'pubgm_special': 'UC',
       'codm_sgmy': 'CP',
       'freefire': 'Diamonds',
-      'freefire': 'Diamonds',
       'gi': 'Genesis Crystals',
       'valo': 'VP',
       'steam': 'Wallet'
