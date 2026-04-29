@@ -14,8 +14,14 @@
       "dest": "https://topup-station-api-v2.maakunn470.workers.dev/api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/build/$1"
+      "src": "/assets/(.*)",
+      "dest": "/client/build/assets/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/build/index.html"
     }
   ]
 }
