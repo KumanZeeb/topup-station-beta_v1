@@ -404,7 +404,7 @@
 /* Grid 3 kolom untuk semua ukuran */
 .checkout-page .nominal-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 kolom SELALU */
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
@@ -436,9 +436,9 @@
   box-shadow: 0 4px 12px rgba(255, 92, 141, 0.3);
 }
 
-/* Amount styling - lebih kecil di mobile */
+/* Amount styling */
 .checkout-page .nominal-amount {
-  font-size: clamp(14px, 4vw, 18px);  /* Responsive font */
+  font-size: clamp(14px, 4vw, 18px);
   font-weight: 800;
   color: #fff;
   line-height: 1.2;
@@ -447,7 +447,7 @@
 }
 
 .checkout-page .nominal-name {
-  font-size: clamp(10px, 3vw, 12px);  /* Responsive font */
+  font-size: clamp(10px, 3vw, 12px);
   color: #aaa;
   margin-bottom: 8px;
   line-height: 1.3;
@@ -457,7 +457,7 @@
 
 /* Price styling */
 .checkout-page .nominal-price {
-  font-size: clamp(13px, 3.5vw, 16px);  /* Responsive font */
+  font-size: clamp(13px, 3.5vw, 16px);
   font-weight: 800;
   color: #ff5c8d;
   margin-top: auto;
@@ -465,7 +465,7 @@
   border-top: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
-/* Stock badge - lebih kecil di mobile */
+/* Old stock badge - keep for backward compatibility */
 .checkout-page .nominal-stock {
   position: absolute;
   top: -6px;
@@ -481,10 +481,143 @@
   box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
 }
 
+/* =========================================== */
+/* STOCK BADGE STYLES (NEW)                    */
+/* =========================================== */
+
+.checkout-page .stock-badge {
+  font-size: clamp(9px, 2.5vw, 11px);
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  text-align: center;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+/* Unlimited Stock */
+.checkout-page .stock-unlimited {
+  background: #1a1a2e;
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+/* Plenty of Stock */
+.checkout-page .stock-plenty {
+  background: #0d2818;
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* Best Seller */
+.checkout-page .stock-bestseller {
+  background: #1a1a0e;
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+/* Almost Gone */
+.checkout-page .stock-low {
+  background: #1a0e0e;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  animation: pulse-stock 2s infinite;
+}
+
+/* Out of Stock */
+.checkout-page .stock-out {
+  background: #1a0e0e;
+  color: #7f1d1d;
+  border: 1px solid rgba(127, 29, 29, 0.2);
+}
+
+/* Available */
+.checkout-page .stock-available {
+  background: #0d1b2a;
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+@keyframes pulse-stock {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* =========================================== */
+/* STOCK LEGEND                               */
+/* =========================================== */
+
+.checkout-page .stock-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: rgba(30, 30, 30, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: clamp(10px, 2.5vw, 11px);
+  color: #a1a1aa;
+}
+
+.checkout-page .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.checkout-page .legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.checkout-page .legend-dot.stock-unlimited {
+  background: #7c3aed;
+}
+
+.checkout-page .legend-dot.stock-plenty {
+  background: #22c55e;
+}
+
+.checkout-page .legend-dot.stock-bestseller {
+  background: #eab308;
+}
+
+.checkout-page .legend-dot.stock-low {
+  background: #ef4444;
+}
+
+.checkout-page .legend-dot.stock-out {
+  background: #7f1d1d;
+}
+
+.checkout-page .legend-dot.stock-available {
+  background: #60a5fa;
+}
+
+/* =========================================== */
+/* DISABLED CARD (OUT OF STOCK)               */
+/* =========================================== */
+
+.checkout-page .nominal-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.checkout-page .nominal-card.disabled:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
 /* Extra small devices (below 360px) */
 @media (max-width: 360px) {
   .checkout-page .nominal-grid {
-    gap: 4px;  /* Gap lebih kecil */
+    gap: 4px;
   }
   
   .checkout-page .nominal-card {
@@ -502,6 +635,22 @@
   .checkout-page .nominal-price {
     font-size: 11px;
     padding-top: 4px;
+  }
+  
+  .checkout-page .stock-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  
+  .checkout-page .stock-legend {
+    gap: 4px;
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+  
+  .checkout-page .legend-dot {
+    width: 6px;
+    height: 6px;
   }
 }
 
@@ -536,7 +685,7 @@
   border-radius: 16px;
   color: #888;
   border: 1px dashed rgba(255, 255, 255, 0.1);
-  grid-column: 1 / -1;  /* Span all columns */
+  grid-column: 1 / -1;
 }
 
 /* ===== ORDER SUMMARY ===== */
@@ -755,6 +904,15 @@
     padding: 12px;
     font-size: 14px;
   }
+  
+  .checkout-page .stock-legend {
+    gap: 6px;
+    padding: 8px 10px;
+  }
+  
+  .checkout-page .legend-item {
+    font-size: 10px;
+  }
 }
 
 /* Extra small devices */
@@ -776,6 +934,7 @@
     font-size: 16px;
   }
 }
+
 /* ===== PAY NOW SECTION ===== */
 .checkout-page .pay-now-section {
   margin: 32px 16px 24px;
@@ -1361,15 +1520,6 @@
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .checkout-page .region-selector-section {
@@ -1404,7 +1554,7 @@
     padding: 8px 12px;
     font-size: 12px;
     min-width: 45px;
-    flex: 1 1 calc(33.33% - 6px); /* 3 kolom di mobile */
+    flex: 1 1 calc(33.33% - 6px);
   }
   
   .checkout-page .region-loading {
@@ -1438,33 +1588,15 @@
   outline-offset: 2px;
 }
 
-/* First and last border radius */
 .checkout-page .region-buttons {
   border-radius: 20px;
 }
 
-/* Animation untuk loading */
-@keyframes pulse {
-  0% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.6;
-  }
-}
-
-.checkout-page .region-loading {
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Hover effect untuk container */
 .checkout-page .region-selector-section:hover {
   border-color: rgba(255, 92, 141, 0.1);
   transition: border-color 0.3s ease;
 }
+
 /* ===== DARK MODE SUPPORT ===== */
 @media (prefers-color-scheme: dark) {
   .checkout-page {
