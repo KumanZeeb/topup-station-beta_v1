@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useTranslation } from '../context/TranslationContext';
 
 import Header from './../components/layout/Header';
+import HeroBanner from '../components/checkout/HeroBanner'; // ✅ FIX: Import HeroBanner
 import ProductMetrics from '../components/checkout/ProductMetrics';
 import DescriptionSection from '../components/checkout/DescriptionSection';
 import AccountForm from '../components/checkout/AccountForm';
@@ -14,15 +15,14 @@ import CheckoutSkeleton from '../components/skeletons/CheckoutSkeleton';
 
 import '../components/styles/checkout.css';
 
-const API_URL = process.env.NODE_ENV === 'production'
-  ? "https://topup-station-api-v2.maakunn470.workers.dev/api"
-  : "http://localhost:3001/api";
+// ✅ HARDCODE API URL langsung ke worker
+const API_URL = 'https://topup-station-api-v2.maakunn470.workers.dev/api';
 
-const WHATSAPP_NUMBER = window.WHATSAPP_NUMBER || '601173807270';
+const WHATSAPP_NUMBER = '601173807270'; // ✅ Hardcode juga biar aman
 
 const api = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
+  withCredentials: false, // ✅ Ganti ke false karena worker nggak perlu credentials
   headers: {
     'Content-Type': 'application/json',
   }
@@ -62,35 +62,40 @@ const CheckoutPage = () => {
     const fetchProductAndItems = async () => {
       try {
         setLoading(true);
+        setError(null);
         
-        console.log(`Fetching product with shortname: ${productSlug}`);
+        console.log(`🔍 Fetching product: ${productSlug}`);
         
+        // Fetch product by shortname
         const productRes = await api.get(`/products/shortname/${productSlug}`);
         
-        const productData = productRes.data.data;
-        console.log('Product found:', productData);
+        if (!productRes.data.success || !productRes.data.data) {
+          throw new Error('Product not found');
+        }
         
-        // FILTER REGION: Hanya MY, SG, ID (buang PH dan lainnya)
-        if (productData.regions && productData.regions.length > 0) {
+        const productData = productRes.data.data;
+        console.log('✅ Product found:', productData.name);
+        
+        // Filter regions (only MY, SG, ID)
+        if (productData.regions && Array.isArray(productData.regions)) {
           const allowedRegions = ['MY', 'SG', 'ID'];
           productData.regions = productData.regions.filter(r => allowedRegions.includes(r));
-          console.log('Filtered regions:', productData.regions);
+          console.log('🌍 Regions:', productData.regions);
         }
         
         setProduct(productData);
         
-        if (productData.regions && productData.regions.length > 0) {
-          setRegion(productData.regions[0]);
-          setOrderData(prev => ({ ...prev, region: productData.regions[0] }));
-        }
+        // Set default region
+        const defaultRegion = productData.regions?.[0] || 'MY';
+        setRegion(defaultRegion);
+        setOrderData(prev => ({ ...prev, region: defaultRegion }));
         
-        if (productData) {
-          await fetchItemsByShortNamePrefix(productData.short_name, productData.regions[0] || 'MY');
-        }
+        // Fetch items dengan filter di server (lebih efisien!)
+        await fetchItemsByShortNamePrefix(productData.short_name, defaultRegion);
         
       } catch (err) {
-        console.error('Error fetching product:', err);
-        setError(t('checkout.error.productNotFound'));
+        console.error('❌ Error:', err.message);
+        setError(t('checkout.error.productNotFound') || 'Product tidak ditemukan');
       } finally {
         setLoading(false);
       }
@@ -101,72 +106,69 @@ const CheckoutPage = () => {
 
   const fetchItemsByShortNamePrefix = async (shortNamePrefix, regionCode) => {
     try {
-      console.log(`Fetching items with prefix: ${shortNamePrefix} in region ${regionCode}`);
+      setChangingRegion(true);
       
-      let itemsData = [];
+      console.log(`🎮 Fetching items: prefix=${shortNamePrefix}, region=${regionCode}`);
       
-      try {
-        console.log('Trying /items/all endpoint...');
-        const res = await api.get(`/items/all`, {
-          params: { region_code: regionCode }
+      // ✅ LANGSUNG filter di server pake query param
+      const res = await api.get('/items/all', {
+        params: { 
+          region_code: regionCode,
+          product_short_name: shortNamePrefix  // Filter di server!
+        }
+      });
+      
+      const itemsData = res.data.data || [];
+      console.log(`✅ Got ${itemsData.length} items from server`);
+      
+      // Debug: log sample
+      if (itemsData.length > 0) {
+        console.log('📋 Sample item:', {
+          name: itemsData[0].name,
+          amount: itemsData[0].amount,
+          price: itemsData[0].price,
+          region_data: itemsData[0].region_data
         });
-        itemsData = res.data.data || [];
-        console.log(`Fetched ${itemsData.length} total items`);
-        
-        itemsData = itemsData.filter(item => 
-          item.product_short_name?.toLowerCase().startsWith(shortNamePrefix.toLowerCase())
-        );
-        console.log(`Filtered to ${itemsData.length} items with prefix ${shortNamePrefix}`);
-        
-      } catch (allErr) {
-        console.log('/items/all not available, trying /items/by-shortname...');
-        
-        const exactRes = await api.get(`/items/by-shortname/${shortNamePrefix}`, {
-          params: { region_code: regionCode }
-        });
-        itemsData = exactRes.data.data || [];
-        console.log(`Found ${itemsData.length} items via exact match`);
       }
       
       if (itemsData.length === 0) {
-        console.warn(`No items found for prefix: ${shortNamePrefix}`);
+        console.warn('⚠️ No items found');
         setItems([]);
-        setChangingRegion(false);
+        setSelectedNominal(null);
         return;
       }
       
+      // ✅ Proses items dengan data dari worker (region_data UDAH include)
       const itemsWithPrice = itemsData.map(item => {
-        const itemRegion = item.item_regions?.find(
-          ir => ir.region_code === regionCode
-        );
-        
-        const originalPrice = itemRegion?.price ? parseFloat(itemRegion.price) : 0;
-        const markedUpPrice = originalPrice * 1.10;
+        // Worker udah ngasih price & region_data langsung
+        const originalPrice = parseFloat(item.price) || 0;
+        const markedUpPrice = originalPrice * 1.10; // Markup 10%
         
         return {
           ...item,
           amount: item.amount,
           originalPrice: originalPrice,
           price: markedUpPrice,
-          stock: itemRegion?.stock || 0,
-          region_data: itemRegion,
+          stock: item.stock || 0,
+          is_available: item.is_available !== false,
+          region_data: item.region_data || null,
           formattedPrice: markedUpPrice > 0 
             ? `RM ${markedUpPrice.toFixed(2)}`
             : t('nominal.price')
         };
       });
       
-      const validItems = itemsWithPrice.filter(item => item.price > 0);
-      const sortedItems = validItems.sort((a, b) => (a.amount || 0) - (b.amount || 0));
-      setItems(sortedItems);
+      // Filter & sort
+      const validItems = itemsWithPrice
+        .filter(item => item.price > 0 && item.is_available)
+        .sort((a, b) => (a.amount || 0) - (b.amount || 0));
       
-      console.log(`Final items count: ${sortedItems.length}`);
-      if (sortedItems.length > 0) {
-        console.log(`First item: ${sortedItems[0].name} - price: RM ${sortedItems[0].price?.toFixed(2)}`);
-      }
-
-      if (sortedItems.length > 0) {
-        handleNominalSelect(sortedItems[0]);
+      setItems(validItems);
+      console.log(`✅ Final items: ${validItems.length}`);
+      
+      // Auto-select first item
+      if (validItems.length > 0) {
+        handleNominalSelect(validItems[0]);
       } else {
         setSelectedNominal(null);
         setOrderData(prev => ({
@@ -178,15 +180,15 @@ const CheckoutPage = () => {
       }
       
     } catch (err) {
-      console.error('Error fetching items:', err);
+      console.error('❌ Error fetching items:', err.message);
       setItems([]);
+      setSelectedNominal(null);
     } finally {
       setChangingRegion(false);
     }
   };
 
   const handleRegionChange = async (newRegion) => {
-    setChangingRegion(true);
     setRegion(newRegion);
     setOrderData(prev => ({ ...prev, region: newRegion }));
     
@@ -197,9 +199,7 @@ const CheckoutPage = () => {
 
   const handleNominalSelect = (item) => {
     const price = item.price || 0;
-
     setSelectedNominal(item);
-
     setOrderData(prev => ({
       ...prev,
       nominal: item,
@@ -208,40 +208,32 @@ const CheckoutPage = () => {
     }));
   };
 
-  // UPDATE: Function buat ambil amount atau nama item (khusus amount=1)
   const getAmountOrName = () => {
     if (!selectedNominal) return '';
     
-    // Kalo amount = 1, return nama itemnya (spasi diganti underscore buat WA format)
     if (selectedNominal.amount === 1) {
-      // Bersihin nama: underscore ke spasi dulu, trus spasi balik ke underscore
-      // Atau langsung akses name asli dari DB (biasanya udah pake underscore)
       return selectedNominal.name?.replace(/\s+/g, '_') || '';
     }
     
-    // Kalo amount > 1, return angkanya
     if (selectedNominal.amount) return selectedNominal.amount;
     
-    // Fallback: ambil angka dari nama
     const match = selectedNominal.name?.match(/\d+/);
     return match ? match[0] : '';
   };
 
-  // UPDATE: Function buat ngecek apakah produk MLBB
   const isMLBB = () => {
     const shortName = product?.short_name?.toLowerCase();
     return shortName === 'mlbb' || shortName === 'mobilelegends' || shortName?.includes('mlbb');
   };
 
   const sendToWhatsApp = () => {
-    // Validasi beda berdasarkan game
+    // Validasi
     if (isMLBB()) {
       if (!orderData.gameId || !orderData.serverId) {
         alert(t('checkout.forms.account.gameId.error'));
         return;
       }
     } else {
-      // Untuk game lain, mungkin hanya butuh gameId
       if (!orderData.gameId) {
         alert('ID Game wajib diisi');
         return;
@@ -268,10 +260,9 @@ const CheckoutPage = () => {
     const serviceFee = 0.5;
     const total = subtotal + serviceFee;
     const uniqueCode = generateUniqueCode();
-    const amountOrName = getAmountOrName(); // Pake function baru
+    const amountOrName = getAmountOrName();
     const actualShortName = selectedNominal?.product_short_name || product?.short_name;
 
-    // UPDATE: Format ID & Server (khusus MLBB digabung tanpa spasi)
     let gameIdServer = orderData.gameId;
     if (isMLBB() && orderData.serverId) {
       gameIdServer = `${orderData.gameId}${orderData.serverId}`;
@@ -345,6 +336,10 @@ ${t('checkout.orderConfirmation.status')}: *${t('checkout.orderConfirmation.wait
     );
   };
 
+  // ===========================================
+  // RENDER
+  // ===========================================
+  
   if (loading) {
     return (
       <div className="checkout-page">
@@ -356,9 +351,14 @@ ${t('checkout.orderConfirmation.status')}: *${t('checkout.orderConfirmation.wait
 
   if (error) {
     return (
-      <div className="checkout-error">
-        <h2>{error}</h2>
-        <button onClick={() => navigate('/')}>{t('checkout.error.backToHome')}</button>
+      <div className="checkout-page">
+        <Header />
+        <div className="checkout-error">
+          <h2>{error}</h2>
+          <button onClick={() => navigate('/games')}>
+            {t('checkout.error.backToHome') || 'Kembali'}
+          </button>
+        </div>
       </div>
     );
   }
@@ -375,6 +375,7 @@ ${t('checkout.orderConfirmation.status')}: *${t('checkout.orderConfirmation.wait
 
       <DescriptionSection product={product} />
 
+      {/* Region Selector */}
       {product.regions && product.regions.length > 0 && (
         <div className="region-selector-section">
           <h3>{t('checkout.region.title')}</h3>
@@ -386,7 +387,9 @@ ${t('checkout.orderConfirmation.status')}: *${t('checkout.orderConfirmation.wait
                 onClick={() => handleRegionChange(reg)}
                 disabled={changingRegion}
               >
-                {reg}
+                {reg === 'MY' ? '🇲🇾 Malaysia' : 
+                 reg === 'SG' ? '🇸🇬 Singapore' : 
+                 reg === 'ID' ? '🇮🇩 Indonesia' : reg}
               </button>
             ))}
           </div>
