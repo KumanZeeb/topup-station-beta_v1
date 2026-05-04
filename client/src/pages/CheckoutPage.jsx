@@ -78,7 +78,7 @@ const CheckoutPage = () => {
         
         // Filter regions (only MY, SG, ID)
         if (productData.regions && Array.isArray(productData.regions)) {
-          const allowedRegions = ['MY', 'SG', 'ID'];
+          const allowedRegions = ['MY', 'SG', 'ID', 'RU', 'GB' ];
           productData.regions = productData.regions.filter(r => allowedRegions.includes(r));
           console.log('🌍 Regions:', productData.regions);
         }
