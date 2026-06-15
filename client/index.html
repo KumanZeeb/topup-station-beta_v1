@@ -79,6 +79,16 @@
     <meta name="msapplication-navbutton-color" content="#ff6b00" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- ==================== PWA ==================== -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="AmiraStore" />
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="AmiraStore" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
     <!-- ==================== MOBILE APP ==================== -->
     <meta name="format-detection" content="telephone=no" />
@@ -214,7 +224,23 @@
     <!-- ==================== TITLE (DUAL TITLE) ==================== -->
     <title>AmiraStore - Top Up Game Termurah & Terpercaya di Malaysia | Free Fire, MLBB, PUBG, Valorant, Genshin Impact</title>
   </head>
+  
   <body>
+  <!-- ==================== PWA REGISTER ==================== -->
+  <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log("Service Worker registered:", registration.scope);
+            })
+            .catch((error) => {
+              console.log("Service Worker failed:", error);
+            });
+        });
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
