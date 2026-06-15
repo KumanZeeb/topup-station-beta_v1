@@ -1,7 +1,7 @@
 {
   "name": "AmiraStore",
   "short_name": "Amira",
-  "description": "Top Up Game Termurah Malaysia",
+  "description": "Experience fast, secure and affordable game top ups in Malaysia. Get instant delivery for Free Fire, Mobile Legends, PUBG Mobile, Valorant, Genshin Impact, Steam Wallet and more, anytime 24/7."
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
